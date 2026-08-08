@@ -6,6 +6,7 @@
 - GitHub API で gist 一覧を取得(per_page=100 で最大ページネーション)
 - 各 gist の中身は raw_url から取得して raw/(GistID).md に保存
 - 複数ファイルを含む gist は区切りコメントを挟んで連結
+- メタデータ(id, description, created_at, updated_at)を raw/index.json に保存
 - 環境変数 GITHUB_TOKEN があれば API リクエストに使う(レート制限緩和)
 """
 
@@ -70,10 +71,27 @@ def save_gist(gist):
     return gist_id
 
 
+def save_index(gists):
+    entries = [
+        {
+            "id": g["id"],
+            "description": g["description"] or "",
+            "created_at": g["created_at"],
+            "updated_at": g["updated_at"],
+        }
+        for g in gists
+    ]
+    entries.sort(key=lambda e: e["created_at"], reverse=True)
+    path = os.path.join(RAW_DIR, "index.json")
+    with open(path, "w", encoding="utf-8", newline="\n") as f:
+        json.dump(entries, f, ensure_ascii=False, indent=1)
+
+
 def main():
     os.makedirs(RAW_DIR, exist_ok=True)
     gists = list_all_gists()
     print(f"total: {len(gists)} gists")
+    save_index(gists)
 
     failed = []
     with ThreadPoolExecutor(max_workers=MAX_WORKERS) as executor:
