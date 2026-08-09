@@ -24,4 +24,6 @@
 
 このページは [ホワイトハラスメント](white_harassment.md)（任せてもらえない）、[Paper-Trail Fear](paper_trail_fear.md)（余計なことを言わないのが最適解）と合わせて読むと立体的になる。機会を奪われ、発言が損になる環境で、若手が最低限モードに入るのは怠惰ではなく **均衡** なのだ。
 
+なお同じ諦めは、留まる形（静かな退職）だけでなく去る形にも分岐する。前触れなく突然離職する [サイレント退職](silent_quitting.md) がそれで、引き金は同じ「相談しても無駄」である。
+
 出典 Gist: [26aeac45](https://gist.github.com/stakiran/26aeac4567cdf74f81aad37473556bbf)

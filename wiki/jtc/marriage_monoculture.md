@@ -29,6 +29,12 @@
 
 会議文化の存続理由を作者は別の Gist で「意思決定層の認知的同質性」とも表現しており、「対面重視の人が出世しやすい→対面の文化が作られる→その文化で評価される人がまた出世する」という再生産ループと合わせて読むと、この仮説は JTC の**変われなさの人的基盤**を説明する補助線として機能する。実証はされていない仮説だが、JTC 語彙への新規追加として特筆に値する。
 
-関連: [会議という責任分散装置](meeting_as_responsibility_diffusion.md) / [作者が直面する JTC の構造](authors_jtc_structure.md)
+## 続報: 理論版が見つかった
+
+第 2 回走査で、この仮説をはるかに精緻に組み直した Gist が出てきた。ワーキングメモリ・注意制御・感覚処理感受性の三軸で「割り込み耐性」を定義し、**マネジメント適性と既婚を共通原因で説明する** 版である。「既婚だから昇進した」でも「昇進したから結婚した」でもない第三の説明として、そちらのほうが射程が広い。
+
+さらに重要な帰結として、そこでは「マネジメントが割り込み耐性を要求するのは本質なのか、いまのやり方がそうなっているだけなのか」という自己批判が展開される。詳細は [認知アーキテクチャによる選抜](cognitive_selection.md) を参照。
+
+関連: [認知アーキテクチャによる選抜](cognitive_selection.md) / [会議という責任分散装置](meeting_as_responsibility_diffusion.md) / [作者が直面する JTC の構造](authors_jtc_structure.md)
 
 出典 Gist: [330df365](https://gist.github.com/stakiran/330df365ac1e9c7ba9f5d58165fef5e1), [1279ff93](https://gist.github.com/stakiran/1279ff9373d5b7dff1a7b2d195ad5d04), [1ab49e9b](https://gist.github.com/stakiran/1ab49e9b748abaf18c021ea2bc523484)
