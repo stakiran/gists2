@@ -120,7 +120,11 @@ def build_index_page(entries):
         date = e["created_at"][:10]
         title = html.escape(entry_title(e))
         lines.append(f'<li>{date} <a href="./{e["id"]}.html">{title}</a></li>')
-    body = "<h1>gists2</h1>\n<ul>\n" + "\n".join(lines) + "\n</ul>"
+    body = (
+        "<h1>gists2</h1>\n"
+        '<p><a href="./wiki/index.html">wiki</a></p>\n'
+        "<ul>\n" + "\n".join(lines) + "\n</ul>"
+    )
     page = PAGE_TEMPLATE.format(title="gists2", nav="", body=body)
     with open(os.path.join(DOCS_DIR, "index.html"), "w", encoding="utf-8", newline="\n") as f:
         f.write(page)

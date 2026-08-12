@@ -1,1 +1,3 @@
 docs/*.html
+docs/wiki/
+__pycache__/
