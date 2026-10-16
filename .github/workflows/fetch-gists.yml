@@ -23,10 +23,12 @@ jobs:
         with:
           python-version: "3.12"
 
+      # Actions の GITHUB_TOKEN は Gist API にアクセスできない(403)ので使わない。
+      # レート制限対策に PAT を使う場合は secrets.GIST_TOKEN に設定する(スコープ不要)
       - name: Fetch latest gists
         run: python gists.py
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GIST_TOKEN }}
 
       - name: Commit and push if changed
         id: commit
