@@ -1,0 +1,51 @@
+name: Fetch gists
+
+on:
+  schedule:
+    # UTC 21:00 = JST 06:00, 3日ごと(毎月 1,4,7,...日)。月替わりで間隔が 1〜3 日にずれることがある
+    - cron: "0 21 */3 * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  actions: write
+
+concurrency:
+  group: fetch-gists
+  cancel-in-progress: false
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Fetch latest gists
+        run: python gists.py
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Commit and push if changed
+        id: commit
+        run: |
+          git add raw
+          if git diff --cached --quiet; then
+            echo "no changes"
+            echo "pushed=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "update gists ($(date -u +%Y-%m-%d))"
+          git push
+          echo "pushed=true" >> "$GITHUB_OUTPUT"
+
+      # GITHUB_TOKEN による push は on: push を発火させないため、明示的に Pages ビルドを起動する
+      - name: Trigger Pages build
+        if: steps.commit.outputs.pushed == 'true'
+        run: gh workflow run pages.yml --ref master
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
