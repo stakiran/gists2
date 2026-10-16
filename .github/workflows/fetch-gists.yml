@@ -2,8 +2,8 @@ name: Fetch gists
 
 on:
   schedule:
-    # UTC 21:00 = JST 06:00, 3日ごと(毎月 1,4,7,...日)。月替わりで間隔が 1〜3 日にずれることがある
-    - cron: "0 21 */3 * *"
+    # UTC 19:30 = 翌日 JST 04:30, 3日ごと(JST で毎月 2,5,8,...日)。月替わりで間隔が 1〜3 日にずれることがある
+    - cron: "30 19 */3 * *"
   workflow_dispatch:
 
 permissions:
